@@ -2,12 +2,23 @@
 #include <string.h>
 #include <ctype.h>
 
+// Função para converter placa para minúsculas
+char* toLowerCasePlaca(char placa[]) {
+    for (int i = 0; i < strlen(placa); i++) {
+        placa[i] = tolower(placa[i]);
+    }
+    return placa;
+}
+
 int main() {
     char placa[10];
     char dia[20];
 
     // Leitura da placa e do dia da semana
     scanf("%s %s", placa, dia);
+
+    // Convertendo a placa para minúsculas
+    toLowerCasePlaca(placa);
 
     // Verificação do formato da placa
     int formatoInvalido = 0;
@@ -32,9 +43,10 @@ int main() {
     // Verificação e saída conforme as regras
     if (formatoInvalido) {
         printf("Placa invalida\n");
-    } else if (diaInvalido) {
+    } if (diaInvalido) {
         printf("Dia da semana invalido\n");
-    } else {
+    } 
+    if(!formatoInvalido && !diaInvalido) {
         int ultimoDigito = placa[strlen(placa) - 1] - '0';
 
         if ((strcmp(dia, "SEGUNDA-FEIRA") == 0 && (ultimoDigito == 0 || ultimoDigito == 1)) ||
@@ -46,9 +58,9 @@ int main() {
         } else if (strcmp(dia, "SABADO") == 0 || strcmp(dia, "DOMINGO") == 0) {
             printf("Nao ha proibicao no fim de semana\n");
         } else {
-        printf("%s pode circular %s\n", placa, dia);
+            printf("%s pode circular %s\n", placa, toLowerCasePlaca(dia));
         }
     }
 
-    return 0;
+    return 0; 
 }
