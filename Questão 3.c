@@ -18,7 +18,6 @@ int main() {
     scanf("%s %s", placa, dia);
 
     // Convertendo a placa para minúsculas
-    toLowerCasePlaca(placa);
 
     // Verificação do formato da placa
     int formatoInvalido = 0;
@@ -54,7 +53,7 @@ int main() {
             (strcmp(dia, "QUARTA-FEIRA") == 0 && (ultimoDigito == 4 || ultimoDigito == 5)) ||
             (strcmp(dia, "QUINTA-FEIRA") == 0 && (ultimoDigito == 6 || ultimoDigito == 7)) ||
             (strcmp(dia, "SEXTA-FEIRA") == 0 && (ultimoDigito == 8 || ultimoDigito == 9))) {
-            printf("%s nao pode circular %s\n", placa, dia);
+            printf("%s nao pode circular %s\n", placa, toLowerCasePlaca(dia));
         } else if (strcmp(dia, "SABADO") == 0 || strcmp(dia, "DOMINGO") == 0) {
             printf("Nao ha proibicao no fim de semana\n");
         } else {
